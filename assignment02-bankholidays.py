@@ -3,7 +3,7 @@
 # bank holidays that occur in northern Ireland.
 
 # The program is then modified to print the 
-# bank holidays that are unique to northern Ireland 
+# bank holidays (names) that are unique to northern Ireland 
 # compared to the rest of the UK (you can choose if you want to use the name or the date of the holiday to decide if it is unique.)
 
 # import JSON
@@ -16,13 +16,43 @@ import json
 with open('bankholidays.json', 'r') as file:
     data = json.load(file)
 
-print(json.dumps(data, indent=4))
+# print file to check that it has been read in
+#print(json.dumps(data, indent=4))
 
-# print northern ireland BH dates
+# access nested dict keys
+# to get Northern Ireland holidays
+# https://labex.io/tutorials/python-how-to-access-nested-keys-in-a-python-json-object-395034
+ni_events = data["northern-ireland"]["events"]
+
+# Print just the dates using for-loop
+# https://www.w3schools.com/python/python_for_loops.asp
+print("Bank Holiday dates in Northern Ireland:")
+for ev in ni_events:
+    print(ev["date"])
 
 
+# modified program to print out unique ni bank
+# holiday names
 
+# get events for other regions
+# already have ni events above
+ew_events = data["england-and-wales"]["events"]
+scot_events = data["scotland"]["events"]
 
+# Collect all other holiday names
+other_titles = {ev["title"] for ev in ew_events + scot_events}
+
+# Collect NI holiday names to
+# prevent duplicates from being printed
+ni_titles = {ev["title"] for ev in ni_events}
+
+# combine for loop and if statement
+# to print only NI holidays that are unique to NI
+#https://sparkbyexamples.com/python/python-for-loop-with-if-statement/
+print("Unique Northern Ireland bank holidays:")
+for title in ni_titles:
+    if title not in other_titles:
+        print(title)
 
 
 
