@@ -4,7 +4,7 @@
 
 # The program is then modified to print the 
 # bank holidays (names) that are unique to northern Ireland 
-# compared to the rest of the UK (you can choose if you want to use the name or the date of the holiday to decide if it is unique.)
+# compared to the rest of the UK 
 
 # import JSON
 import json 
@@ -35,7 +35,7 @@ for ev in ni_events:
 # holiday names
 
 # get events for other regions
-# already have ni events above
+# note: already extracted ni events above
 ew_events = data["england-and-wales"]["events"]
 scot_events = data["scotland"]["events"]
 
