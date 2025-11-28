@@ -1,5 +1,6 @@
-Python==3.12.7  
-Matplotlib.pyplot==
-numPy==
-pandas==
-json==
+Python==3.12.1  
+Matplotlib.pyplot==3.10.7
+numpy==2.3.4
+pandas==2.3.3
+json = built in, no version
+seaborn==0.13.2

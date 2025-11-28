@@ -14,7 +14,7 @@ import json
 # read in data from file
 # https://www.geeksforgeeks.org/python/read-json-file-using-python/
 
-with open('./data/bankholidays.json', 'r') as file:
+with open('../data/bankholidays.json', 'r') as file:
     data = json.load(file)
 
 # print file to check that it has been read in
@@ -32,7 +32,7 @@ for ev in ni_events:
     print(ev["date"])
 
 
-# modified program to print out unique ni bank
+# modify program to print out unique ni bank
 # holiday names
 
 # get events for other regions
