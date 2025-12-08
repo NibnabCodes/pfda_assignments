@@ -7,32 +7,23 @@
 
 import json
 
-# Read JSON data from file
 with open("../data/bankholidays.json", "r") as file:
     data = json.load(file)
 
-# Print file contents to verify it has been read correctly
 print(json.dumps(data, indent=4))
 
-# Access nested dictionary keys to get Northern Ireland holidays
 ni_events = data["northern-ireland"]["events"]
 
-# Print only the dates of Northern Ireland bank holidays
 print("Bank Holiday dates in Northern Ireland:")
 for ev in ni_events:
     print(ev["date"])
 
-# Get events for other UK regions
 ew_events = data["england-and-wales"]["events"]
 scot_events = data["scotland"]["events"]
 
-# Collect holiday names from other regions
 other_titles = {ev["title"] for ev in ew_events + scot_events}
-
-# Collect Northern Ireland holiday names
 ni_titles = {ev["title"] for ev in ni_events}
 
-# Print only Northern Ireland holidays that do not appear elsewhere
 print("Unique Northern Ireland bank holidays:")
 for title in ni_titles:
     if title not in other_titles:
